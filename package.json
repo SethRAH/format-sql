@@ -1,0 +1,32 @@
+{
+    "name":"format-sql",
+    "version": "0.1.0",
+    "description": "format SQL text into readable format",
+    "main": "index.js",
+    "license": "MIT",
+    "author": {
+        "name": "Seth Hare",
+        "email": "srahare@gmail.com",
+        "url": "https://github.com/SethRAH"
+    },
+    "dependencies": {},
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"ERROR: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "sql",
+        "format",
+        "formatter",
+        "code-format",
+        "text-format"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/SethRAH/format-sql.git"
+    },
+    "homepage": "https://github.com/SethRAH/format-sql",
+    "bugs":{
+        "url": "https://github.com/SethRAH/format-sql/issues"
+    }
+}
