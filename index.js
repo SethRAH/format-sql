@@ -36,7 +36,7 @@
                 keyword: "WITH UR;",
                 indentPosition: 'Front',
                 newlineAfter: false,
-                subsequentIndent: 0
+                subsequentIndent: 1
             },
             {
                 keyword: "ORDER BY",
@@ -125,7 +125,7 @@
         var outputText = ' ' + _formatsql.normalizeWhiteSpace(_removeComments(inputText));
         
         outputText = _addLineBreaksBeta(outputText);
-        
+        outputText = trimString(outputText);
         return outputText;
     };
     
@@ -216,7 +216,7 @@
            
             
             _defaultOptions.linebreakKeywords.forEach(function(keyword){
-                var re = new RegExp('\\s'+keyword.keyword+'\\s', 'gi');
+                var re = new RegExp('(\\s|^)'+keyword.keyword+'(\\s|$)', 'gi');
                 
                 var prefix = '\r\n';
                 for(var i = 0; i < _defaultOptions.scopeTabCoefficient * itm.scopeDepth; i++){
@@ -229,9 +229,14 @@
                 var postfix = '';
                 if(keyword.newlineAfter){
                     postfix += '\r\n';
+                    for(var i = 0; i < keyword.subsequentIndent+(_defaultOptions.scopeTabCoefficient * itm.scopeDepth); i++){
+                        postfix += '\t';
+                    }
                 }
-                for(var i = 0; i < keyword.subsequentIndent+(_defaultOptions.scopeTabCoefficient * itm.scopeDepth); i++){
-                    postfix += '\t';
+                else {
+                    for(var i = 0; i < keyword.subsequentIndent; i++){
+                        postfix += '\t';
+                    }
                 }
                 
                 itemString = itemString.replace(re, prefix+keyword.keyword+' '+postfix);
@@ -255,6 +260,10 @@
             return "";
         }        
     }
+    
+    var trimString = function(string){
+        return string.replace(/^\s*/,'').replace(/\s*$/,'');        
+    };
    
     var splitListByParenthesisAndScope = function(list){
         var curScopeDepth = 0;
