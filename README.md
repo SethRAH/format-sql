@@ -7,10 +7,12 @@ small JavaScript module to format SQL queries with more readable line breaks etc
 
 ## Usage
 
-  var sql = "SELECT employeeId, givenName, familialName FROM dbo.Employee WHERE familialName LIKE '%son%' ORDER BY familialName asc, givenName asc",
-      formatted = formatSql.formatQuery(sql);
+```JavaScript
+var sql = "SELECT employeeId, givenName, familialName FROM dbo.Employee WHERE familialName LIKE '%son%' ORDER BY familialName asc, givenName asc",
+    formatted = formatSql.formatQuery(sql);
      
-  console.log('sql', sql, 'formatted', formatted);
+console.log('sql', sql, 'formatted', formatted);
+```
 
 ## Tests
 
